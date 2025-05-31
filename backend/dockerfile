@@ -1,0 +1,22 @@
+# backend/Dockerfile
+
+# Use official Node.js image as base
+FROM node:18
+
+# Set working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json (if available)
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy all backend source files
+COPY . .
+
+# Expose the port backend runs on (e.g., 5000)
+EXPOSE 4000
+
+# Start the backend server
+CMD ["npm", "start"]
